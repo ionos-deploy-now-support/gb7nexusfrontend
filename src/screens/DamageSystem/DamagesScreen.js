@@ -31,7 +31,7 @@ export const DamagesScreen = ({ isLoggedIn, isAdmin, currentUserId }) => {
                 setDamages(damagesDataArray);
             }
         })()
-    }, []);
+    }, [currentUserId, isAdmin]);
 
     return (
         <>

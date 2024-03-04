@@ -26,7 +26,7 @@ export const EditUserScreen = ({ isLoggedIn, isAdmin, currentUserId }) => {
         if (userId === currentUserId) {
             navigate('/settings');
         }
-    }, [userId, currentUserId]);
+    }, [userId, currentUserId, navigate]);
 
     const [tenants, setTenants] = useState('');
 

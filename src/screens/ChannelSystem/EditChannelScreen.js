@@ -94,6 +94,7 @@ export const EditChannelScreen = ({ isLoggedIn, currentUserId }) => {
         }
 
         const response = await editChannelByIdAPI(channelId, channelname, users, channelrights);
+        console.log(response);
     };
 
     return (

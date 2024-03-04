@@ -23,7 +23,7 @@ export const DashboardScreen = ({ isLoggedIn, isAdmin, currentUserId }) => {
                 setObjects(objectsData.data.data.objects);
             })()
         }
-    }, []);
+    }, [isAdmin]);
 
     const [object, setObject] = useState([]);
 
@@ -35,7 +35,7 @@ export const DashboardScreen = ({ isLoggedIn, isAdmin, currentUserId }) => {
                 setTenants(tenantsData.data.data.tenants);
             })()
         }
-    }, []);
+    }, [isAdmin]);
 
     const [tenant, setTenant] = useState([]);
     useEffect(() => {
@@ -48,7 +48,7 @@ export const DashboardScreen = ({ isLoggedIn, isAdmin, currentUserId }) => {
                 }
             })()
         }
-    }, [currentUserId]);
+    }, [currentUserId, isAdmin]);
 
     useEffect(() => {
         if (tenant) {
@@ -69,7 +69,7 @@ export const DashboardScreen = ({ isLoggedIn, isAdmin, currentUserId }) => {
                 setUsers(usersData.data.response.data.data.users);
             })()
         }
-    }, []);
+    }, [isAdmin]);
 
     const [damages, setDamages] = useState([]);
     useEffect(() => {
@@ -86,7 +86,7 @@ export const DashboardScreen = ({ isLoggedIn, isAdmin, currentUserId }) => {
                 }
             })()
         }
-    }, [currentUserId]);
+    }, [currentUserId, isAdmin]);
 
     const [channels, setChannels] = useState([]);
     useEffect(() => {
@@ -101,7 +101,7 @@ export const DashboardScreen = ({ isLoggedIn, isAdmin, currentUserId }) => {
                 }
             }
         })()
-    }, [currentUserId]);
+    }, [currentUserId, isAdmin]);
     
     return (
         <>

@@ -67,7 +67,7 @@ export const ChatDetailScreen = ({ isLoggedIn, currentUserId }) => {
                 }
             }
         }
-    }, [currentUserId, chatUsers]);
+    }, [currentUserId, chatUsers, checkUser]);
 
     const handleSendMessage = async (e) => {
         e.preventDefault();
@@ -131,10 +131,11 @@ export const ChatDetailScreen = ({ isLoggedIn, currentUserId }) => {
                 )}
             </ul>
 
-            {(chat.chatrights === "everyone" || (chat.chatrights == "admins" && isChatAdmin)) && (
+            {(chat.chatrights === "everyone" || (chat.chatrights === "admins" && isChatAdmin)) && (
                 <form onSubmit={editState ? handleEditMessage : handleSendMessage}>
                     <input type="text" placeholder="Type your message..." value={chatMessage} onChange={(e) => setChatMessage(e.target.value)} />
                     <button type="submit">{editState ? 'Save' : 'Send'}</button>
+                    {error && (<p>{error}</p>)}
                 </form>
             )}
         </>

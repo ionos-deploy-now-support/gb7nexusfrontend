@@ -25,7 +25,7 @@ export const UsersScreen = ({ isLoggedIn, isAdmin, currentUserId }) => {
                 setUsers(usersData.data.response.data.data.users);
             })()
         }
-    }, []);
+    }, [isAdmin]);
 
     const handleDeleteUser = async (userId, e) => {
         e.preventDefault();

@@ -66,7 +66,7 @@ export const ChannelDetailScreen = ({ isLoggedIn, currentUserId }) => {
                 setIsChannelAdmin(currentUserIsChannelAdmin);
             }
         }
-    }, [channelUsers]);
+    }, [channelUsers, checkUser]);
 
     const handleSendMessage = async (e) => {
         e.preventDefault();
@@ -147,11 +147,12 @@ export const ChannelDetailScreen = ({ isLoggedIn, currentUserId }) => {
                 )}
             </ul>
 
-            {(channel.channelrights === "everyone" || (channel.channelrights == "admins" && isChannelAdmin)) && (
+            {(channel.channelrights === "everyone" || (channel.channelrights === "admins" && isChannelAdmin)) && (
                 <form onSubmit={editState ? handleEditMessage : handleSendMessage}>
                     <input type="text" placeholder="Title ..." value={title} onChange={(e) => setTitle(e.target.value)} />
                     <input type="text" placeholder="Type your message..." value={channelMessage} onChange={(e) => setChannelMessage(e.target.value)} />
                     <button type="submit">{editState ? 'Save' : 'Send'}</button>
+                    {error && (<p>{error}</p>)}
                 </form>
             )}
         </>

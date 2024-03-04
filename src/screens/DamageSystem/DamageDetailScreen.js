@@ -68,9 +68,8 @@ export const DamageDetailScreen = ({ isLoggedIn}) => {
 
     return (
         <>
-            <h1></h1>
+            <h1>{damageDetails.title}</h1>
             <div>
-                <p><strong>Title:</strong> {damageDetails.title}</p>
                 <p><strong>Objectname:</strong> {damageDetails.object.objectname}</p>
                 <p><strong>Adress:</strong> {damageDetails.adress.adress}</p>
                 <p><strong>Floor/Elevator:</strong> {damageDetails.floorOrElevator}</p>
