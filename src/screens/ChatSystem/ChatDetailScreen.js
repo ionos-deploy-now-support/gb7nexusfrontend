@@ -59,7 +59,7 @@ export const ChatDetailScreen = ({ isLoggedIn, currentUserId }) => {
         const currentUserIsChatAdmin = checkUser(); 
         setIsChatAdmin(currentUserIsChatAdmin);
         
-    }, [channelUsers, currentUserId]);
+    }, [chatUsers, currentUserId]);
 
     const handleSendMessage = async (e) => {
         e.preventDefault();
