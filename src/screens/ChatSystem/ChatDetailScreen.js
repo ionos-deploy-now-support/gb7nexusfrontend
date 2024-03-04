@@ -47,27 +47,19 @@ export const ChatDetailScreen = ({ isLoggedIn, currentUserId }) => {
         })();
     }, [chatId]);
 
-    const checkUser = () => {
-        if (currentUserId) {
-            const user = chatUsers.find(user => user._id === currentUserId);
-            if (user) {
-                return user.isAdmin;
+    useEffect(() => {
+        const checkUser = () => {
+            if (currentUserId) {
+                const user = chatUsers.find(user => user._id === currentUserId);
+                return user ? user.isAdmin : false;
             }
             return false;
-        }
-    }
+        };
 
-    useEffect(() => {
-        if (chatUsers) {
-            if (currentUserId) {
-                const currentUserIsChatAdmin = checkUser();
-                console.log(currentUserIsChatAdmin);
-                if (currentUserIsChatAdmin) {
-                    setIsChatAdmin(currentUserIsChatAdmin);
-                }
-            }
-        }
-    }, [currentUserId, chatUsers, checkUser]);
+        const currentUserIsChatAdmin = checkUser(); 
+        setIsChatAdmin(currentUserIsChatAdmin);
+        
+    }, [channelUsers, currentUserId]);
 
     const handleSendMessage = async (e) => {
         e.preventDefault();

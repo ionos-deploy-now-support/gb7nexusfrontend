@@ -49,24 +49,19 @@ export const ChannelDetailScreen = ({ isLoggedIn, currentUserId }) => {
         })();
     }, [channelId]);
 
-    const checkUser = () => {
-        if (currentUserId) {
-            const user = channelUsers.find(user => user._id === currentUserId);
-            if (user) {
-                return user.isAdmin;
+    useEffect(() => {
+        const checkUser = () => {
+            if (currentUserId) {
+                const user = channelUsers.find(user => user._id === currentUserId);
+                return user ? user.isAdmin : false;
             }
             return false;
-        }
-    }
+        };
 
-    useEffect(() => {
-        if (channelUsers) {
-            const currentUserIsChannelAdmin = checkUser(); 
-            if (currentUserIsChannelAdmin) {
-                setIsChannelAdmin(currentUserIsChannelAdmin);
-            }
-        }
-    }, [channelUsers, checkUser]);
+        const currentUserIsChannelAdmin = checkUser(); 
+        setIsChannelAdmin(currentUserIsChannelAdmin);
+        
+    }, [channelUsers, currentUserId]); 
 
     const handleSendMessage = async (e) => {
         e.preventDefault();
